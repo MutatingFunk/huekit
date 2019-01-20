@@ -199,12 +199,18 @@ open class ColorBarPicker: UIControl {
 		super.endTracking(touch, with: event)
 		
 		shrinkIndicator()
+		
+		self.sendActions(for: .touchUpInside)
+		self.sendActions(for: .editingChanged)
 	}
 	
 	override open func cancelTracking(with event: UIEvent?) {
 		super.cancelTracking(with: event)
 		
 		shrinkIndicator()
+		
+		self.sendActions(for: .touchUpOutside)
+		self.sendActions(for: .editingChanged)
 	}
 	
 	private func changeIndicatorSize(to size: CGSize) {
